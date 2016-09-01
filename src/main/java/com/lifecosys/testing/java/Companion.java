@@ -8,8 +8,8 @@ import javaslang.collection.Map;
 
 public class Companion {
 
-	public static StringContext StringContext(Map<String, Object> values) {
-		return new StringContext(values);
-	}
+    public static StringContext StringContext(Map<String, Object> values) {
+        return new StringContext(values);
+    }
 
 }

@@ -1,6 +1,5 @@
-import com.lifecosys.testing.java.AshotTestWatcher;
-import com.lifecosys.testing.java.WebAssertable;
-import com.lifecosys.testing.java.WebTestable;
+package com.lifecosys.testing.java;
+
 import org.fluentlenium.adapter.FluentTest;
 import org.fluentlenium.core.FluentPage;
 import org.fluentlenium.core.annotation.Page;
@@ -18,8 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class WebTest extends FluentTest implements WebTestable, WebAssertable {
 
-    @Page
-    WebPage bingPage;
+    @Page WebPage bingPage;
 
     @Test
     public void checkJava() throws Exception {
@@ -49,7 +47,6 @@ public class WebTest extends FluentTest implements WebTestable, WebAssertable {
         assertThat(bingPage.getJavaLinkText()).contains("Official Site");
 
     }
-
 
     @Override
     public WebDriver getDefaultDriver() {

@@ -12,7 +12,7 @@ object BuildSettings {
     addCommandAlias("install", ";formatJava;scalariformFormat;compile;test") ++
       addCommandAlias("testing", ";clean;scalariformFormat;compile;test")
 
-  lazy val projectBuildSettings = basicSettings ++ scalaFormattingSettings
+  lazy val projectBuildSettings = basicSettings ++ scalaFormattingSettings ++ javaFormattingSettings
 
   val basicSettings = Defaults.coreDefaultSettings ++ lifecycle ++ Seq(
     version := VERSION,
@@ -42,6 +42,16 @@ object BuildSettings {
         .setPreference(SpacesWithinPatternBinders, true)
         .setPreference(DoubleIndentClassDeclaration, true)
         .setPreference(SpacesAroundMultiImports, true)
+  }
+
+  import com.lifecosys.sbt.JavaCodeFormatterPlugin.JavaCodeFormatterKeys._
+  val javaFormattingSettings = {
+    val online: URL = new URL("https://raw.githubusercontent.com/hyysguyang/java-code-formatter/master/sample-style/JavaConventions-variant.xml")
+    val codingStyle = IO.temporaryDirectory / "eclipse-codingstyle.xml"
+    if (!codingStyle.exists()) IO.download(online, codingStyle)
+    List(
+      eclipseProfileFile in javaCodeFormatter := Some(codingStyle)
+    )
   }
 
 }

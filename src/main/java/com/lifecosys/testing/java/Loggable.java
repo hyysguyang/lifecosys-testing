@@ -1,6 +1,5 @@
 package com.lifecosys.testing.java;
 
-import org.fluentlenium.adapter.FluentTest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -30,7 +30,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.*;
  * @author <a href="mailto:hyysguyang@gmail.com">Young Gu</a>
  */
 
-public interface WebTestable {
+public interface WebTestable extends Loggable {
 
     default Logger logger() {
         return LoggerFactory.getLogger(this.getClass().getName());
@@ -135,8 +135,8 @@ public interface WebTestable {
             System.setProperty("webdriver.chrome.driver", "/Develop/tools/chromedriver/chromedriver");
         }
 
-        ChromeDriverService service = new ChromeDriverService.Builder().usingAnyFreePort()
-                .withEnvironment(seleniumEnv().toJavaMap()).build();
+        ChromeDriverService.Builder builder = new ChromeDriverService.Builder();
+        ChromeDriverService service = builder.usingAnyFreePort().withEnvironment(seleniumEnv().toJavaMap()).build();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
         ChromeDriver driver = new ChromeDriver(service, options);
