@@ -5,7 +5,6 @@ import org.apache.commons.lang3.text.StrSubstitutor;
 
 /**
  * @author <a href="mailto:hyysguyang@gmail.com">Young Gu</a>
- * @author <a href="mailto:guyang@lansent.com">Young Gu</a>
  */
 public class StringContext {
 
@@ -22,7 +21,6 @@ public class StringContext {
 	 * @return
 	 */
 	public String s(String source) {
-		return StrSubstitutor.replace(source.replaceAll("'", "\""),
-				context.toJavaMap());
+		return StrSubstitutor.replace(source.replaceAll("'", "\""), context.toJavaMap());
 	}
 }

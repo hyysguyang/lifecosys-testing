@@ -1,6 +1,5 @@
-import com.lifecosys.sbt.JavaCodeFormatterPlugin.JavaCodeFormatterKeys._
 import sbt.Keys._
-import sbt.{IO, _}
+import sbt._
 
 /**
   * @author <a href="mailto:hyysguyang@gmail.com">Young Gu</a>
@@ -26,8 +25,7 @@ object BuildSettings {
     scalaVersion := "2.11.6",
     credentials += Credentials(Path.userHome / ".ivy2" / ".credentials"),
     javaOptions += s"-source 1.8 -target 1.8 -Xlint -parameters",
-    crossPaths := false,
-    autoScalaLibrary := false
+    crossPaths := false
   )
 
   val scalaFormattingSettings = {
@@ -44,16 +42,6 @@ object BuildSettings {
         .setPreference(SpacesWithinPatternBinders, true)
         .setPreference(DoubleIndentClassDeclaration, true)
         .setPreference(SpacesAroundMultiImports, true)
-  }
-
-
-  val javaFormattingSettings = {
-    val online: URL = new URL("https://raw.githubusercontent.com/hyysguyang/java-code-formatter/master/sample-style/JavaConventions-variant.xml")
-    val codingStyle = IO.temporaryDirectory / "eclipse-codingstyle.xml"
-    if (!codingStyle.exists()) IO.download(online, codingStyle)
-    List(
-      eclipseProfileFile in javaCodeFormatter := Some(codingStyle)
-    )
   }
 
 }
