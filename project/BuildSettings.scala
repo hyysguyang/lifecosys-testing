@@ -24,7 +24,7 @@ object BuildSettings {
     startYear := Some(2016),
     scalaVersion := "2.11.6",
     credentials += Credentials(Path.userHome / ".ivy2" / ".credentials"),
-    javaOptions += s"-source 1.8 -target 1.8 -Xlint -parameters",
+    javacOptions ++= Seq("-source", "1.8", "-target", "1.8"),
     crossPaths := false
   )
 

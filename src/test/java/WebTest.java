@@ -23,13 +23,13 @@ public class WebTest extends FluentTest implements WebTestable, WebAssertable {
 
     @Test
     public void checkJava() throws Exception {
-        goTo("https://www.yahoo.com/");
+        goTo("https://search.yahoo.com/");
 
         await().until("input[name='p']").isClickable();
         assertThat($("input[name='p']").getText()).isEmpty();
         $("input[name='p']").text("java");
         assertThat($("input[name='p']").getValue()).isEqualTo("java");
-        $("input[name='go']").click();
+        $("[type='submit']").click();
         await().until("a[href='http://www.java.com/']").isDisplayed();
 
         assertThat($("a[href='http://www.java.com/']").getText()).contains("Java");
@@ -59,7 +59,7 @@ public class WebTest extends FluentTest implements WebTestable, WebAssertable {
     @Rule public TestRule testWatcher = new AshotTestWatcher(getDriver());
 }
 
-@PageUrl("https://www.yahoo.com/")
+@PageUrl("https://search.yahoo.com/")
 class WebPage extends FluentPage implements WebTestable, WebAssertable {
 
     public String getQueryText() {
