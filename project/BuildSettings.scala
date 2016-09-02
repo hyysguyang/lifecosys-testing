@@ -6,7 +6,7 @@ import sbt._
   * @author <a href="mailto:Young.Gu@lifcosys.com">Young Gu</a>
   */
 object BuildSettings {
-  val VERSION = "0.2-SNAPSHOT"
+  val VERSION = "0.2"
 
   val lifecycle =
     addCommandAlias("install", ";formatJava;scalariformFormat;compile;test") ++
