@@ -23,9 +23,11 @@ object BuildSettings {
     licenses += ("Apache-2.0", url("https://www.apache.org/licenses/LICENSE-2.0.html")),
     startYear := Some(2016),
     scalaVersion := "2.11.6",
+    publishArtifact in (Compile, packageDoc) := false,
     credentials += Credentials(Path.userHome / ".ivy2" / ".credentials"),
     javacOptions ++= Seq("-source", "1.8", "-target", "1.8"),
-    crossPaths := false
+    crossPaths := false,
+    autoScalaLibrary := false
   )
 
   val scalaFormattingSettings = {
